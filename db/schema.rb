@@ -10,9 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2021_05_01_201108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "complaints", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.bigint "company_id", null: false
+    t.bigint "locale_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_complaints_on_company_id"
+    t.index ["locale_id"], name: "index_complaints_on_locale_id"
+  end
+
+  create_table "locales", force: :cascade do |t|
+    t.float "long"
+    t.float "lat"
+    t.bigint "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_locales_on_company_id"
+  end
+
+  add_foreign_key "complaints", "companies"
+  add_foreign_key "complaints", "locales"
+  add_foreign_key "locales", "companies"
 end
