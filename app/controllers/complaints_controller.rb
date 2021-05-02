@@ -1,6 +1,7 @@
 class ComplaintsController < ApplicationController
   def create
-    Operations::Create::Company.new.run(complaint_params)
+    company = Operations::Create::Company.new.run(complaint_params)
+    locale = Operations::Create::Locale.new.run(complaint_params[:location], company[:id])
   end
 
   private
