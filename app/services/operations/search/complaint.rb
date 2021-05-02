@@ -9,16 +9,16 @@ module Operations
 
       def search(params)
         ::Complaint.where(
-          company_id: company_id(params),
-          locale_id: locale_id(params)
+          company_id: company(params),
+          locale_id: locale(params)
         ).count
       end
 
-      def company_id(params)
+      def company(params)
         Company.find_by(name: params[:company]) || false
       end
 
-      def locale_id(params)
+      def locale(params)
         Locale.find_by(state: params[:state], city: params[:city],
                        postcode: params[:postcode]) || false
       end
