@@ -33,8 +33,11 @@ ActiveRecord::Schema.define(version: 2021_05_01_201108) do
   end
 
   create_table "locales", force: :cascade do |t|
-    t.float "long"
-    t.float "lat"
+    t.string "coordinates"
+    t.string "address"
+    t.string "state"
+    t.string "country"
+    t.string "postcode"
     t.bigint "company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
