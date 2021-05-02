@@ -4,6 +4,7 @@ class CreateLocales < ActiveRecord::Migration[6.1]
       t.string :coordinates
       t.string :address
       t.string :state
+      t.string :city
       t.string :country
       t.string :postcode
 

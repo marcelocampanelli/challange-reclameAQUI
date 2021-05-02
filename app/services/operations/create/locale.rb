@@ -16,6 +16,10 @@ module Operations
         [@place['lon'].to_f, @place['lat'].to_f].to_s
       end
 
+      def set_city
+        @place['address']['town']
+      end
+
       def set_address
         @place['address']['road']
       end
@@ -39,6 +43,7 @@ module Operations
           state: set_state,
           country: set_country,
           postcode: set_postcode,
+          city: set_city,
           company_id: company_id
         }
       end

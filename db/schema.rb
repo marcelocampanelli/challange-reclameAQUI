@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2021_05_01_201108) do
     t.string "coordinates"
     t.string "address"
     t.string "state"
+    t.string "city"
     t.string "country"
     t.string "postcode"
     t.bigint "company_id", null: false
