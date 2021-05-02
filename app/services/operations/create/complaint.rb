@@ -8,7 +8,7 @@ module Operations
       private
 
       def create(params, company_id, locale_id)
-        ::Complaint.create(complait_params(params, company_id, locale_id))
+        ::Complaint.create!(complait_params(params, company_id, locale_id))
       end
 
       def complait_params(params, company_id, locale_id)

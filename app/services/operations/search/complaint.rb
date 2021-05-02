@@ -7,20 +7,25 @@ module Operations
 
       private
 
-      def search(params)
+      def get_complaints
         ::Complaint.where(
-          company_id: company(params),
-          locale_id: locale(params)
+          company_id: @company,
+          locale_id: @locale
         ).count
       end
 
+      def search(params)
+        company(params)
+        locale(params)
+        get_complaints
+      end
+
       def company(params)
-        Company.find_by(name: params[:company]) || false
+        @company = Company.find_by(name: params[:company]) || false
       end
 
       def locale(params)
-        Locale.find_by(state: params[:state], city: params[:city],
-                       postcode: params[:postcode]) || false
+        @locale = Locale.where(company_id: @company.id, postcode: params[:postcode]) || false
       end
     end
   end

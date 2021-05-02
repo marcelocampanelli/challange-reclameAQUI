@@ -8,7 +8,7 @@ module Operations
       private
 
       def create(params)
-        ::Company.find_or_create_by(company_name(params))
+        ::Company.find_or_create_by!(company_name(params))
       end
 
       def company_name(params)

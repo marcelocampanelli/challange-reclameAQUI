@@ -3,7 +3,7 @@ module Operations
     class Locale
       def run(params, company)
         search(params)
-        ::Locale.find_or_create_by(set_params(company))
+        ::Locale.find_or_create_by!(set_params(params, company))
       end
 
       private
@@ -36,7 +36,7 @@ module Operations
         @place['address']['postcode']
       end
 
-      def set_params(company_id)
+      def set_params(_params, company_id)
         {
           coordinates: set_coordinates,
           address: set_address,
