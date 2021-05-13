@@ -1,6 +1,5 @@
 # README
 
-link challange https://gist.github.com/brunoocasali/95f62e9d2e5e54cfd44d9ad696b20c42
 
 Para rodar esse projeto é necessário instalar docker / docker-compose 
 starte o service do docker
